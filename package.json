@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/index.js",
+    "start": "yarn build && node dist/src/index.js",
     "lint": "eslint --ignore-path .gitignore --ext .ts,.js .",
     "lintfix": "yarn lint --fix"
   },
