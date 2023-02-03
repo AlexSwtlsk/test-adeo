@@ -4,18 +4,21 @@ const filterMode = (filterValueFromCli: string, countries: Country[]) => {
     throw new Error('Usage: --filter=<your criteria>')
   }
 
-  return getCountriesWithAnimalsFromCritera(countries, filterValue)
-}
-
-const getCountriesWithAnimalsFromCritera = (countries: Country[], filterValue: string): Country[] => {
   return countries
-}
-
-const getMatchingAnimalsFromPeople = (people: Person) => {
-  //
+    .map(country => ({
+      name: country.name,
+      people: country.people.map((person) => ({ 
+        name: person.name, 
+        animals: person.animals.filter(
+          (animal => animal.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase())))
+      }))
+        .filter((person) => person.animals.length)
+    }))
+    .filter((country) => country.people.length)
 }
 
 export {
   filterMode,
-  getCountriesWithAnimalsFromCritera
+  // getMatchingAnimalsFromPeople,
+  // getCountriesWithPeopleWhoHaveAnimalsFromCritera
 }

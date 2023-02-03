@@ -1,12 +1,11 @@
 export const data: Country[] = [
   {
     name: 'Dillauti',
-    people:
-    [
+    people: [
       {
         name: 'Winifred Graham',
-        animals:
-        [{name: 'Anoa'},
+        animals: [
+          {name: 'Anoa'},
           {name: 'Duck'},
           {name: 'Narwhal'},
           {name: 'Badger'},

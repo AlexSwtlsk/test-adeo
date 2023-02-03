@@ -9,16 +9,17 @@ import { filterMode } from './filter'
 
 const ALLOWED_FEATURES = ['--filter', '--count']
 
-
 const start = () => {
   const feature = checkArgumentsFromCli(process.argv, ALLOWED_FEATURES)
   
   if (feature.startsWith('--filter')) {
-    filterMode(feature, data)
+    const result = filterMode(feature, data)
+    console.log('result', JSON.stringify(result))
     return
   }
 
-  return countMode()
+  const result = countMode()
+  console.log('result', result)
 }
 
 start()
