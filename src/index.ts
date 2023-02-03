@@ -18,7 +18,7 @@ const start = () => {
     return
   }
 
-  const result = countMode()
+  const result = countMode(data)
   console.log('result', result)
 }
 
