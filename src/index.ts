@@ -3,8 +3,8 @@ dotenv.config()
 
 
 const start = () => {
-	console.log('start')
-	console.log(process.env.EXAMPLE_VALUE)
+  console.log('start')
+  console.log(process.env.EXAMPLE_VALUE)
 }
 
 start()
