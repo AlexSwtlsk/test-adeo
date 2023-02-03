@@ -1,9 +1,9 @@
 interface Country {
 	name: string
-	people: People[]
+	people: Person[]
 }
 
-interface People {
+interface Person {
 	name: string
 	animals: Animal[]
 }
