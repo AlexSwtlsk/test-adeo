@@ -2,53 +2,19 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 import { exit } from 'process'
+import { checkArgumentsFromCli } from './cli'
+import { countMode } from './count'
 import { data } from './data/mock'
+import { filterMode } from './filter'
 
 const ALLOWED_FEATURES = ['--filter', '--count']
 
-const checkArgumentsFromCli = (args: string[]) => {
-  const givenArgument = args.slice(2)[0]
-  if (!givenArgument) {
-    throw new Error('No feature given')
-  }
-
-  const isAnExistingFeature = ALLOWED_FEATURES.find((feature: string) => givenArgument.startsWith(feature))
-  if (!isAnExistingFeature) {
-    throw new Error('Available features: --filter=<your search> and --count')
-  }
-  return givenArgument
-}
-
-const filterMode = (filterValueFromCli: string) => {
-  const filterValue = filterValueFromCli.slice('--filter='.length)
-  if (!filterValue) {
-    throw new Error('Usage: --filter=<your criteria>')
-  }
-
-  
-  return getCountrieWithAnimalsFromCritera(filterValue)
-}
-
-const getCountrieWithAnimalsFromCritera = (filterValue: string): Country[] => {
-  
-
-  return data.map((country) => ({
-    name: country.name,
-    people: _checkAnimalsForCriteria(country.people),
-  }))
-
-}
-
-
-const countMode = () => {
-  //
-}
 
 const start = () => {
-  const app = checkArgumentsFromCli(process.argv)
+  const feature = checkArgumentsFromCli(process.argv, ALLOWED_FEATURES)
   
-  if (app.startsWith('--filter')) {
-    filterMode(app)
+  if (feature.startsWith('--filter')) {
+    filterMode(feature, data)
     return
   }
 
