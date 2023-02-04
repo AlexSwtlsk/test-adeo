@@ -7,7 +7,9 @@ const countMode = (countries: Country[]) => {
         name: `${person.name} [${person.animals.length}]`, 
         animals: person.animals
       }))
+        .filter((person) => !!person.animals.length)
     }))
+    .filter((country) => !!country.people.length)
 
 }
 

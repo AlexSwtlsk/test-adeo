@@ -9,7 +9,8 @@ import { filterMode } from './filter'
 
 const ALLOWED_FEATURES = ['--filter', '--count']
 
-const start = () => {
+export const start = () => {
+  console.log('called', )
   const feature = checkArgumentsFromCli(process.argv, ALLOWED_FEATURES)
   
   if (feature.startsWith('--filter')) {

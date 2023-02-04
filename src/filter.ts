@@ -4,6 +4,10 @@ const filterMode = (filterValueFromCli: string, countries: Country[]) => {
     throw new Error('Usage: --filter=<your criteria>')
   }
 
+  return filterFromCriteria(filterValue, countries)
+}
+
+const filterFromCriteria = (filterValue: string, countries: Country[]) => {
   return countries
     .map(country => ({
       name: country.name,
@@ -23,5 +27,6 @@ const filterAnimalsFromCriteria = (animals: Animal[], str: string) => {
 
 export {
   filterMode,
+  filterFromCriteria,
   filterAnimalsFromCriteria,
 }
