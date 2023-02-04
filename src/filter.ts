@@ -9,16 +9,19 @@ const filterMode = (filterValueFromCli: string, countries: Country[]) => {
       name: country.name,
       people: country.people.map((person) => ({ 
         name: person.name, 
-        animals: person.animals.filter(
-          (animal => animal.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase())))
+        animals: filterAnimalsFromCriteria(person.animals, filterValue)
       }))
         .filter((person) => person.animals.length)
     }))
     .filter((country) => country.people.length)
 }
 
+const filterAnimalsFromCriteria = (animals: Animal[], str: string) => {
+  return animals.filter(
+    (animal => animal.name.toLocaleLowerCase().includes(str.toLocaleLowerCase())))
+}
+
 export {
   filterMode,
-  // getMatchingAnimalsFromPeople,
-  // getCountriesWithPeopleWhoHaveAnimalsFromCritera
+  filterAnimalsFromCriteria,
 }
